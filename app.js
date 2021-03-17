@@ -4,24 +4,26 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
-import { userRouter } from "./router";
+import userRouter from "./routers/userRouter";
+import videoRouter from "./routers/videoRouter";
+import globalRouter from "./routers/globalRouter";
+import routes from "./routes";
 
+// express 실행한 결과를 app 상수로 저장
 const app = express();
 
-const handleHome = (req, res) => res.send("Hello from home. cool nodemon");
-
-const handleProfile = (req, res) => res.send("You are on my profile~");
-
+// cookie를 전달 받아서 사용할 수 있도록 만들어주는 미들웨어 사용자 인증 같은 곳에서 쿠키를 검사할 떄 사용
 app.use(cookieParser());
+// 사용자가 웹사이트로 전달하는 정보를 검사, request 정보에서 form이나 json 형태로 된 body 검사
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// application 보안
 app.use(helmet());
+// appllication에서 발생하는 모든 일 logging
 app.use(morgan("dev"));
 
-app.get("/", handleHome);
-
-app.get("/profile", handleProfile);
-
-app.use("/user", userRouter);
+app.use(routes.home, globalRouter);
+app.use(routes.users, userRouter);
+app.use(routes.videos, videoRouter);
 
 export default app;
