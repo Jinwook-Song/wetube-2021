@@ -6,19 +6,20 @@ const LOGOUT = "/logout";
 const SEARCH = "/search";
 
 // Users
+
 const USERS = "/users";
 const USER_DETAIL = "/:id";
-const EDIT_PROFILE = "/:id/edit-profile";
-const CHANGE_PASSWORD = "/:id/change-password";
+const EDIT_PROFILE = "/edit-profile";
+const CHANGE_PASSWORD = "/change-password";
 
-// Vidieos
+// Videos
+
 const VIDEOS = "/videos";
 const UPLOAD = "/upload";
-const VIDEIO_DETAIL = "/:id";
-const EDIT_VIDEIO = "/:id/edit";
-const DELETE_VIDIO = "/:id/delete";
+const VIDEO_DETAIL = "/:id";
+const EDIT_VIDEO = "/:id/edit";
+const DELETE_VIDEO = "/:id/delete";
 
-// Object
 const routes = {
   home: HOME,
   join: JOIN,
@@ -31,9 +32,9 @@ const routes = {
   changePassword: CHANGE_PASSWORD,
   videos: VIDEOS,
   upload: UPLOAD,
-  videoDetail: VIDEIO_DETAIL,
-  editVideo: EDIT_VIDEIO,
-  deleteVideo: DELETE_VIDIO,
+  videoDetail: VIDEO_DETAIL,
+  editVideo: EDIT_VIDEO,
+  deleteVideo: DELETE_VIDEO,
 };
 
 export default routes;
