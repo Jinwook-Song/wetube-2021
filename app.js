@@ -5,7 +5,9 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import passport from "passport";
+import mongoose from "mongoose";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 import { localMiddleware } from "./middlewares";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
@@ -16,6 +18,8 @@ import "./passport";
 
 // express 실행한 결과를 app 상수로 저장
 const app = express();
+
+const CokieSotore = MongoStore(session);
 
 // application 보안
 app.use(helmet()); // cookie를 전달 받아서 사용할 수 있도록 만들어주는 미들웨어 사용자 인증 같은 곳에서 쿠키를 검사할 떄 사용
@@ -33,6 +37,7 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     resave: true,
     saveUninitialized: false,
+    store: new CokieSotore({ mongooseConnection: mongoose.connection }),
   })
 );
 app.use(passport.initialize());
