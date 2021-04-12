@@ -22,7 +22,11 @@ const app = express();
 const CokieSotore = MongoStore(session);
 
 // application 보안
-app.use(helmet()); // cookie를 전달 받아서 사용할 수 있도록 만들어주는 미들웨어 사용자 인증 같은 곳에서 쿠키를 검사할 떄 사용
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+); // cookie를 전달 받아서 사용할 수 있도록 만들어주는 미들웨어 사용자 인증 같은 곳에서 쿠키를 검사할 떄 사용
 app.set("view engine", "pug");
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("static"));
@@ -43,13 +47,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(function (req, res, next) {
-  res.setHeader(
-    "Content-Security-Policy",
-    "script-src 'self' https://archive.org"
-  );
-  return next();
-});
+// app.use(function (req, res, next) {
+//   res.setHeader(
+//     "Content-Security-Policy",
+//     "script-src 'self' https://archive.org"
+//   );
+//   return next();
+// });
 
 app.use(localMiddleware);
 
