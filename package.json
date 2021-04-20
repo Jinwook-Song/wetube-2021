@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "Jinwook Song",
   "dependencies": {
+    "@babel/cli": "^7.13.14",
     "@babel/core": "^7.13.10",
     "@babel/node": "^7.13.10",
     "@babel/polyfill": "^7.12.1",
@@ -50,7 +51,6 @@
     "prestart": "npm run build"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.14",
     "css-loader": "^5.2.0",
     "eslint": "^7.23.0",
     "eslint-config-airbnb-base": "^14.2.1",
