@@ -7,6 +7,7 @@ import bodyParser from "body-parser";
 import passport from "passport";
 import mongoose from "mongoose";
 import session from "express-session";
+import path from "path";
 import MongoStore from "connect-mongo";
 import { localMiddleware } from "./middlewares";
 import routes from "./routes";
@@ -29,8 +30,8 @@ app.use(
   })
 ); // cookie를 전달 받아서 사용할 수 있도록 만들어주는 미들웨어 사용자 인증 같은 곳에서 쿠키를 검사할 떄 사용
 app.set("view engine", "pug");
-app.use("/uploads", express.static("uploads"));
-app.use("/static", express.static("static"));
+app.set("views", path.join(__dirname, "views"));
+app.use("/static", express.static(path.join(__dirname, "static")));
 app.use(cookieParser());
 // 사용자가 웹사이트로 전달하는 정보를 검사, request 정보에서 form이나 json 형태로 된 body 검사
 app.use(bodyParser.json());
