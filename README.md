@@ -4,13 +4,17 @@ Cloning Youtube with Vanilla and NodeJS
 
 ## Pages:
 
-- [ ] Home
+- [x] Home
 - [x] Join
 - [x] Login
 - [x] Search
-- [ ] User Detail
-- [ ] Edit Profile
-- [ ] Change Password
-- [ ] Upload
-- [ ] Video Detail
-- [ ] Edit Video
+- [x] User Detail
+- [x] Edit Profile
+- [x] Change Password
+- [x] Upload
+- [x] Video Detail
+- [x] Edit Video
+
+## Deploy page
+
+- [ ] [https://arcane-shore-25149.herokuapp.com](https://arcane-shore-25149.herokuapp.com)
